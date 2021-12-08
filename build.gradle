@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'fr.arinonia'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
+}
+
+compileJava {
+    options.encoding = "UTF-8"
+}
+
