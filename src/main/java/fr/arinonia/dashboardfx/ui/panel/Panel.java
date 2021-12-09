@@ -18,6 +18,7 @@ public class Panel implements IPanel {
         this.panelManager = panelManager;
         GridPane.setHgrow(this.layout, Priority.ALWAYS);
         GridPane.setVgrow(this.layout, Priority.ALWAYS);
+        this.layout.getChildren().clear();
     }
 
     @Override

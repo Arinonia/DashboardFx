@@ -43,6 +43,9 @@ public class PanelManager {
 
     public void showPanel(final GridPane layout, final IPanel iPanel, final boolean clear) {
         if (clear) {
+            layout.getRowConstraints().clear();
+            layout.getColumnConstraints().clear();
+            layout.getChildren().removeAll(iPanel.getLayout());
             layout.getChildren().clear();
             layout.getChildren().remove(iPanel.getLayout());
         }

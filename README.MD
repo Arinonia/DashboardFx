@@ -18,7 +18,8 @@ Project panel:
 
 ### Librairies
 - [fontawesomefx](https://bitbucket.org/Jerady/fontawesomefx) version 8.9
-
+- [jfoenix](http://www.jfoenix.com/) version 8.0.10
+- [gson](https://github.com/google/gson) version 2.8.9
 ### Release
 
 - [nothing for the moment](#)

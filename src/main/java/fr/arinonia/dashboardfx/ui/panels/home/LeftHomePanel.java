@@ -5,8 +5,10 @@ import fr.arinonia.dashboardfx.ui.PanelManager;
 import fr.arinonia.dashboardfx.ui.controls.BarButton;
 import fr.arinonia.dashboardfx.ui.panel.Panel;
 import fr.arinonia.dashboardfx.ui.panels.RootPanel;
+import fr.arinonia.dashboardfx.utils.Constants;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -74,17 +76,30 @@ public class LeftHomePanel extends Panel {
         this.buttons.add(projects);
 
         final BarButton customers = new BarButton("Customers");
-        customers.setOnClick(new ProjectPanel(), this.buttons, this.rootPanel);
+        customers.setOnClick(new CustomersPanel(), this.buttons, this.rootPanel);
         this.buttons.add(customers);
 
         final BarButton earn = new BarButton("Earn");
         earn.setOnClick(new ProjectPanel(), this.buttons, this.rootPanel);
         this.buttons.add(earn);
 
+        final BarButton settings = new BarButton("Settings");
+        settings.setOnClick(new ProjectPanel(), this.buttons, this.rootPanel);
+        this.buttons.add(settings);
+
         vBox.getChildren().add(projects);
         vBox.getChildren().add(customers);
         vBox.getChildren().add(earn);
+        vBox.getChildren().add(settings);
 
 
+        final Label version = new Label("Version: " + Constants.APP_VERSION);
+        GridPane.setHgrow(version, Priority.ALWAYS);
+        GridPane.setVgrow(version, Priority.ALWAYS);
+        GridPane.setValignment(version, VPos.BOTTOM);
+        GridPane.setHalignment(version, HPos.CENTER);
+        version.setTranslateY(-5.0D);
+        version.setTextFill(Color.rgb(76, 76, 76));
+        this.layout.getChildren().add(version);
     }
 }

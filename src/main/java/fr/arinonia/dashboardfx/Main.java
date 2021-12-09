@@ -1,6 +1,7 @@
 package fr.arinonia.dashboardfx;
 
-import javafx.application.Application;
+import com.sun.javafx.application.LauncherImpl;
+import fr.arinonia.dashboardfx.preloader.FxPreloader;
 
 /**
  * @author Arinonia
@@ -9,7 +10,7 @@ import javafx.application.Application;
 public class Main {
 
     public static void main(String[] args) {
-        Application.launch(FxApplication.class, args);
+        LauncherImpl.launchApplication(FxApplication.class, FxPreloader.class, args);
     }
 
 }

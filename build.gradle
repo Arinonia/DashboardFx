@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     implementation group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
+    implementation 'com.jfoenix:jfoenix:8.0.10'
+    implementation 'com.google.code.gson:gson:2.8.9'
 }
 
 compileJava {
