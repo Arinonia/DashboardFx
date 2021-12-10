@@ -1,6 +1,6 @@
 package fr.arinonia.dashboardfx;
 
-import fr.arinonia.dashboardfx.customers.Customers;
+import fr.arinonia.dashboardfx.customers.CustomersUtil;
 import fr.arinonia.dashboardfx.file.FileManager;
 import fr.arinonia.dashboardfx.ui.PanelManager;
 import fr.arinonia.dashboardfx.ui.panels.RootPanel;
@@ -14,7 +14,7 @@ public class DashBoard {
 
     private final PanelManager panelManager = new PanelManager(this);
     private final FileManager fileManager = new FileManager();
-    private final Customers customersUtils = new Customers(fileManager);
+    private final CustomersUtil customersUtils = new CustomersUtil(fileManager);
 
     public void init(final Stage stage) {
         this.panelManager.createFrame(stage);
@@ -26,7 +26,7 @@ public class DashBoard {
         return this.fileManager;
     }
 
-    public Customers getCustomersUtils() {
+    public CustomersUtil getCustomersUtils() {
         return this.customersUtils;
     }
 }

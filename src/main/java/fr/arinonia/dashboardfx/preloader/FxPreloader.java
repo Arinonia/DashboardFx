@@ -2,7 +2,7 @@ package fr.arinonia.dashboardfx.preloader;
 
 import fr.arinonia.dashboardfx.DashBoard;
 import fr.arinonia.dashboardfx.Main;
-import fr.arinonia.dashboardfx.customers.Customers;
+import fr.arinonia.dashboardfx.customers.CustomersUtil;
 import fr.arinonia.dashboardfx.customers.CustomersData;
 import fr.arinonia.dashboardfx.utils.Constants;
 import javafx.application.Preloader;
@@ -81,7 +81,7 @@ public class FxPreloader extends Preloader {
         }
 
         if (!new File(dashBoard.getFileManager().getCustomersFolder(), "me.customers").exists()) {
-            new Customers(dashBoard.getFileManager()).createCustomers(new CustomersData("Me", "unknown@name.domaine", "null"));
+            new CustomersUtil(dashBoard.getFileManager()).createCustomers(new CustomersData("Me", "unknown@name.domaine", "null"));
         }
     }
 

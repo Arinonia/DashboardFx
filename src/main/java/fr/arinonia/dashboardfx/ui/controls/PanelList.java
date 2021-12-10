@@ -16,7 +16,7 @@ public class PanelList extends ScrollPane {
         this.setHbarPolicy(ScrollBarPolicy.NEVER);
         this.setBackground(Background.EMPTY);
         //this.setBorder(null);
-        this.setStyle("-fx-padding: 0; -fx-background-insets: 0; -fx-border-width:0; -fx-border-insets:0; -fx-background-color: transparent");
+        this.setStyle("-fx-padding: 20px 0 0 0; -fx-background-insets: 0; -fx-border-width:0; -fx-border-insets:0; -fx-background-color: transparent");
 
         this.layout.setOnScroll(new EventHandler<ScrollEvent>() {
 

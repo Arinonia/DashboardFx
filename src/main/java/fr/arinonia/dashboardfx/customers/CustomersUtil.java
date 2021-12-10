@@ -12,12 +12,12 @@ import java.util.Arrays;
  * @author Arinonia
  * Created at 08/12/2021 - 02:57
  **/
-public class Customers {
+public class CustomersUtil {
 
     private final Gson json = new Gson();
     private final FileManager fileManager;
 
-    public Customers(final FileManager fileManager) {
+    public CustomersUtil(final FileManager fileManager) {
         this.fileManager = fileManager;
     }
 

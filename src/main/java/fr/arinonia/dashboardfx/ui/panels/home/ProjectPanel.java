@@ -49,7 +49,6 @@ public class ProjectPanel extends Panel {
         GridPane.setVgrow(panelList, Priority.ALWAYS);
         GridPane.setValignment(panelList, VPos.TOP);
         GridPane.setHalignment(panelList, HPos.CENTER);
-        panelList.setTranslateY(20.0D);
         panelList.getLayout().setSpacing(20.0D);
         panelList.getLayout().setAlignment(Pos.TOP_CENTER);
         topPane.getChildren().add(panelList);
