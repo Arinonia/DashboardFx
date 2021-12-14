@@ -10,5 +10,7 @@ public enum ProjectEnum {
     MCP,
     BUKKIT,
     JAVAFX,
+    WEB,
+    BOT,
     OTHER;
 }

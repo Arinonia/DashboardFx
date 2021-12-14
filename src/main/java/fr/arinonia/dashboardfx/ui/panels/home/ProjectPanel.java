@@ -83,6 +83,7 @@ public class ProjectPanel extends Panel {
         CircleButton circleButton = new CircleButton();
         GridPane.setHalignment(circleButton, HPos.RIGHT);
         GridPane.setValignment(circleButton, VPos.CENTER);
+        circleButton.setOnMouseClicked(e -> this.panelManager.showPanel(this.layout, new AddProjectPanel()));
         bottomPane.getChildren().add(circleButton);
         bottomPane.setPadding(new Insets(0, 10, 0, 0));
     }

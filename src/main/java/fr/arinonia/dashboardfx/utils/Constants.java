@@ -9,4 +9,5 @@ public class Constants {
     public static final String APP_NAME = "DashBoardFX";
 
     public static final String APP_VERSION = "Snapshot-0.0.1";
+    public static final String PURPLE = "884fb0";
 }

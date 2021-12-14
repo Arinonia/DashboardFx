@@ -1,0 +1,7 @@
+.jfx-date-picker .text-field{
+    /*-jfx-unfocus-color: blue;
+    -fx-prompt-text-fill: blueviolet;*/
+    -fx-text-fill: white;
+    -fx-font-family: Inconsolata;
+    -fx-font-size: 16px;
+}

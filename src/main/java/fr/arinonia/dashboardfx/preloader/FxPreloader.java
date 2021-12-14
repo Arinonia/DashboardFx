@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author Arinonia
@@ -81,7 +83,7 @@ public class FxPreloader extends Preloader {
         }
 
         if (!new File(dashBoard.getFileManager().getCustomersFolder(), "me.customers").exists()) {
-            new CustomersUtil(dashBoard.getFileManager()).createCustomers(new CustomersData("Me", "unknown@name.domaine", "null"));
+            new CustomersUtil(dashBoard.getFileManager()).createCustomers(new CustomersData("Me", "unknown@name.domaine", "null", new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
         }
     }
 

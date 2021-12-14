@@ -27,6 +27,9 @@ public class PanelManager {
     }
 
     public void createFrame(final Stage stage) {
+        final Scene scene = new Scene(this.layout = new GridPane());
+        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Inconsolata:700");
+
         this.stage = stage;
         this.stage.setTitle(Constants.APP_NAME);
         this.stage.setMinWidth(1280.0D);
@@ -37,7 +40,7 @@ public class PanelManager {
         this.stage.getIcons().add(new Image(Main.class.getResource("/images/icon.png").toExternalForm()));
         this.stage.centerOnScreen();
         this.stage.setOnCloseRequest(e -> System.exit(0));
-        this.stage.setScene(new Scene(this.layout = new GridPane()));
+        this.stage.setScene(scene);
         this.stage.show();
     }
 
@@ -51,6 +54,11 @@ public class PanelManager {
         }
         layout.getChildren().add(iPanel.getLayout());
         iPanel.init(this);
+
+        if (iPanel instanceof Panel) {
+            Panel panel = (Panel) iPanel;
+            panel.onShow();
+        }
     }
 
     public void showPanel(final GridPane layout, final IPanel iPanel) {

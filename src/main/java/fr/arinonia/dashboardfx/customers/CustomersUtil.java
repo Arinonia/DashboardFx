@@ -22,17 +22,36 @@ public class CustomersUtil {
     }
 
     public CustomersData loadCustomer(final String name) {
-        try {
-            final ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(this.fileManager.getCustomersFolder(), name + ".customers")));
-            return (CustomersData) ois.readObject();
-        } catch (final IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        System.out.println("empty methode");
         return null;
     }
 
     public ArrayList<CustomersData> loadCustomers() {
         final ArrayList<CustomersData> customersData = new ArrayList<>();
+        final File[] files =  this.fileManager.getCustomersFolder().listFiles();
+
+        if (files != null) {
+            for (final File file : files) {
+                if (!file.getName().equals("Me.customers") && file.getName().endsWith(".customers")) {
+
+                    final StringBuilder builder = new StringBuilder();
+
+                    try (final FileReader fileStream = new FileReader(file);
+                        final BufferedReader bufferedReader = new BufferedReader(fileStream)) {
+
+                        String line;
+
+                        while( (line = bufferedReader.readLine()) != null ) {
+                            builder.append(line);
+                        }
+
+                    } catch (IOException ex) {
+                        //exception Handling
+                    }
+                    customersData.add(json.fromJson(builder.toString(), CustomersData.class));
+                }
+            }
+        }
 
         return customersData;
     }

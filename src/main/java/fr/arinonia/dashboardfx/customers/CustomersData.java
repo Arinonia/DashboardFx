@@ -11,11 +11,13 @@ public class CustomersData implements Serializable {
     private final String name;
     private final String email;
     private final String image;
+    private final String date;
 
-    public CustomersData(final String name, final String email, final String image) {
+    public CustomersData(final String name, final String email, final String image, final String date) {
         this.name = name;
         this.email = email;
         this.image = image;
+        this.date = date;
     }
 
     public String getName() {
@@ -30,12 +32,17 @@ public class CustomersData implements Serializable {
         return this.image;
     }
 
+    public String getDate() {
+        return this.date;
+    }
+
     @Override
     public String toString() {
         return "CustomersData{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", image='" + image + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

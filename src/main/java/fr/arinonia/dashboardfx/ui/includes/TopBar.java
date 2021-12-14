@@ -63,12 +63,8 @@ public class TopBar implements IPanel {
         closeIcon.setFill(Color.rgb(200, 200, 200));
         closeIcon.setTranslateX(-5.0D);
         closeIcon.setCursor(Cursor.HAND);
-        closeIcon.setOnMouseEntered(e -> {
-            closeIcon.setFill(Color.rgb(255, 255, 255));
-        });
-        closeIcon.setOnMouseExited(e -> {
-            closeIcon.setFill(Color.rgb(200, 200, 200));
-        });
+        closeIcon.setOnMouseEntered(e -> closeIcon.setFill(Color.rgb(255, 255, 255)));
+        closeIcon.setOnMouseExited(e -> closeIcon.setFill(Color.rgb(200, 200, 200)));
         closeIcon.setOnMouseClicked(e -> System.exit(0));
         layout.getChildren().add(closeIcon);
 

@@ -52,7 +52,7 @@ public class BarButton extends GridPane {
         GridPane.setValignment(textLabel, VPos.CENTER);
         GridPane.setHalignment(textLabel, HPos.LEFT);
         textLabel.setTextFill(Color.WHITE);
-        textLabel.setStyle("-fx-font-size: 18px;");
+        textLabel.setStyle("-fx-font-size: 18px; -fx-font-family: Inconsolata");
         textLabel.setTranslateX(50.0D);
         this.getChildren().add(textLabel);
 
