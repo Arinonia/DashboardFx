@@ -5,13 +5,11 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
-import de.jensd.fx.glyphs.materialicons.MaterialIcon;
-import de.jensd.fx.glyphs.materialicons.MaterialIconView;
+
 import fr.arinonia.dashboardfx.Main;
 import fr.arinonia.dashboardfx.customers.CustomersData;
 import fr.arinonia.dashboardfx.customers.CustomersUtil;
 import fr.arinonia.dashboardfx.ui.PanelManager;
-import fr.arinonia.dashboardfx.ui.panel.IPanel;
 import fr.arinonia.dashboardfx.ui.panel.Panel;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -21,15 +19,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
-import javax.imageio.ImageIO;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
 import java.nio.file.Files;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -212,12 +205,14 @@ public class AddCustomersPanel extends Panel {
 
                         final CustomersData customersData = new CustomersData(usernameField.getText(), emailField.getText(), copied.getAbsolutePath(),datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                         new CustomersUtil(panelManager.getDashBoard().getFileManager()).createCustomers(customersData);
+                        panelManager.showPanel(this.layout, new CustomersPanel());
+                    } else {
+                        //I don't know
                     }
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
         });
 
         background.getChildren().add(addUserButton);

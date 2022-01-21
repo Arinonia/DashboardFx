@@ -37,9 +37,5 @@ public class CircleButton extends GridPane {
 
         this.setOnMouseEntered(e ->  this.setStyle("-fx-background-color: #bb8066; -fx-background-radius: 50%;"));
         this.setOnMouseExited(e ->  this.setStyle("-fx-background-color: #9D5B3E; -fx-background-radius: 50%;"));
-        this.setOnMouseClicked(e -> {
-
-        });
-
     }
 }

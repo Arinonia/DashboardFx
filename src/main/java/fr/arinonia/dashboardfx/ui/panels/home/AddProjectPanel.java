@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.Cursor;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
@@ -20,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 
 /**
  * @author Arinonia
@@ -45,9 +47,10 @@ public class AddProjectPanel extends Panel {
                 return nameColumn.getComputedValue(param);
             }
         });
+        nameColumn.setStyle("-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-font-family: Inconsolata; -fx-font-size: 16px;");
 
         JFXTreeTableColumn<SimpleCustomersProperty, String> emailColumn = new JFXTreeTableColumn<>("Email");
-        emailColumn.setPrefWidth(150);
+        emailColumn.setPrefWidth(228);
         emailColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<SimpleCustomersProperty, String> param) -> {
             if (emailColumn.validateValue(param)) {
                 return param.getValue().getValue().emailProperty();
@@ -55,9 +58,11 @@ public class AddProjectPanel extends Panel {
                 return emailColumn.getComputedValue(param);
             }
         });
+        emailColumn.setStyle("-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-font-family: Inconsolata; -fx-font-size: 16px;");
+
 
         JFXTreeTableColumn<SimpleCustomersProperty, ImageView> pp = new JFXTreeTableColumn<>("");
-        pp.setPrefWidth(100);
+        pp.setPrefWidth(70);
         pp.setCellValueFactory((TreeTableColumn.CellDataFeatures<SimpleCustomersProperty, ImageView> param) -> {
             if (pp.validateValue(param)) {
                 return param.getValue().getValue().imageProperty();
@@ -65,6 +70,7 @@ public class AddProjectPanel extends Panel {
                 return pp.getComputedValue(param);
             }
         });
+        pp.setStyle("-fx-background-color: #1E1E1E;");
 
         JFXTreeTableColumn<SimpleCustomersProperty, String> dateColumn = new JFXTreeTableColumn<>("Date");
         dateColumn.setPrefWidth(150);
@@ -75,6 +81,7 @@ public class AddProjectPanel extends Panel {
                 return dateColumn.getComputedValue(param);
             }
         });
+        dateColumn.setStyle("-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-font-family: Inconsolata; -fx-font-size: 16px;");
 
         ObservableList<SimpleCustomersProperty> users = FXCollections.observableArrayList();
 
@@ -89,19 +96,6 @@ public class AddProjectPanel extends Panel {
             users.add(new SimpleCustomersProperty(customersData.getName(), customersData.getEmail(), imageView, customersData.getDate()));
         }
 
-        /*Image img = new Image(Main.class.getResource("/images/icon.png").toExternalForm());
-        final ImageView imageView = new ImageView(img);
-        imageView.setFitWidth(60);
-        imageView.setFitHeight(60);
-        /*users.add(new SimpleCustomersProperty("john", "sfefse.fes@dqz.com", imageView));
-        users.add(new SimpleCustomersProperty("tamere", "sfefse.fes@dqz.com", imageView));
-        users.add(new SimpleCustomersProperty("lapute", "sfefse.fes@dqz.com", imageView));
-        users.add(new SimpleCustomersProperty("quisuce", "sfefse.fes@dqz.com", imageView));
-        users.add(new SimpleCustomersProperty("desbites", "sfefse.fes@dqz.com", imageView));
-        users.add(new SimpleCustomersProperty("dedromadaire", "sfefse.fes@dqz.com", imageView));
-        users.add(new SimpleCustomersProperty("etdours", "sfefse.fes@dqz.com", imageView));
-        users.add(new SimpleCustomersProperty("etdetriceratops", "sfefse.fes@dqz.com", imageView));*/
-
         final TreeItem<SimpleCustomersProperty> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
 
         final JFXTreeTableView<SimpleCustomersProperty> treeView = new JFXTreeTableView<>(root);
@@ -109,6 +103,7 @@ public class AddProjectPanel extends Panel {
         GridPane.setVgrow(treeView, Priority.ALWAYS);
         GridPane.setHalignment(treeView, HPos.RIGHT);
         GridPane.setValignment(treeView, VPos.TOP);
+        treeView.setStyle("-fx-background-color: #1E1E1E;");
         treeView.setTranslateY(50.0D);
 
         treeView.setMaxSize(600, 460);
@@ -138,6 +133,15 @@ public class AddProjectPanel extends Panel {
 
         this.layout.getChildren().add(treeView);
 
-        this.layout.getStylesheets().add(Main.class.getResource("/css/test.css").toExternalForm());
+        final JFXButton test = new JFXButton("Test");
+        GridPane.setHgrow(test, Priority.ALWAYS);
+        GridPane.setVgrow(test, Priority.ALWAYS);
+        GridPane.setValignment(test, VPos.BOTTOM);
+        GridPane.setHalignment(test, HPos.LEFT);
+        test.setMaxSize(300.0D, 40.0D);
+        test.setStyle("-fx-border-color: rgb(0, 150, 136); -fx-border-width: 1px; -fx-font-size: 18px; -fx-text-fill: white; -fx-font-family: Inconsolata;");
+        test.setCursor(Cursor.HAND);
+        test.setOnMouseClicked(event -> System.out.println(treeView.getSelectionModel().getFocusedIndex()));
+        layout.getChildren().add(test);
     }
 }

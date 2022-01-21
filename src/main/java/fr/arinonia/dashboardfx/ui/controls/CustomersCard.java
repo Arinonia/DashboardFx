@@ -27,7 +27,7 @@ public class CustomersCard extends Card {
         circle.setFill(new ImagePattern(imageView));
         circle.setStyle(" -fx-background-repeat: no-repeat; -fx-background-size: contain;");
         circle.setTranslateX(20.0D);
-        if (imageView != null)
+        if (imageView != null && !imageView.isError())
             this.mainPane.getChildren().add(circle);
 
 

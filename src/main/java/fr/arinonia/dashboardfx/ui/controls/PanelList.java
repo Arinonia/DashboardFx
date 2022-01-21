@@ -4,6 +4,7 @@ import fr.arinonia.dashboardfx.Main;
 import fr.arinonia.dashboardfx.ui.transitions.SmoothishTransition;
 import javafx.animation.Interpolator;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.*;
@@ -17,7 +18,6 @@ public class PanelList extends ScrollPane {
         this.setBackground(Background.EMPTY);
         //this.setBorder(null);
         this.setStyle("-fx-padding: 20px 0 0 0; -fx-background-insets: 0; -fx-border-width:0; -fx-border-insets:0; -fx-background-color: transparent");
-
         this.layout.setOnScroll(new EventHandler<ScrollEvent>() {
 
             private SmoothishTransition transition;
