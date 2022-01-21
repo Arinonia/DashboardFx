@@ -15,7 +15,9 @@ I'M NOT USING FXML, I HATE THAT.
 
 Project panel:
 ![Project Panel](screenshots/project_panel.png?raw=true "Project Panel")
+Customers panel:
 ![Customers Panel](screenshots/customers_panel.png?raw=true "Customers Panel")
+Add customers panel:
 ![Add customers Panel](screenshots/add_customers_panel.png?raw=true "Add customers Panel")
 
 ### Librairies
