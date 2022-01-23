@@ -2,11 +2,13 @@ package fr.arinonia.dashboardfx.projects;
 
 import fr.arinonia.dashboardfx.customers.CustomersData;
 
+import java.io.Serializable;
+
 /**
  * @author Arinonia
  * Created at 22/01/2022 - 02:32
  **/
-public class ProjectData {
+public class ProjectData implements Serializable {
 
     private final ProjectStateEnum projectStateEnum;
     private final ProjectEnum projectEnum;
@@ -46,6 +48,18 @@ public class ProjectData {
 
     public String getDescription() {
         return this.description;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectData{" +
+                "projectStateEnum=" + projectStateEnum +
+                ", projectEnum=" + projectEnum +
+                ", customersData=" + customersData +
+                ", deadLine='" + deadLine + '\'' +
+                ", price='" + price + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
 

@@ -2,7 +2,6 @@ package fr.arinonia.dashboardfx.ui.controls;
 
 import com.jfoenix.controls.JFXComboBox;
 import fr.arinonia.dashboardfx.Main;
-import fr.arinonia.dashboardfx.projects.ProjectEnum;
 import fr.arinonia.dashboardfx.utils.Constants;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;

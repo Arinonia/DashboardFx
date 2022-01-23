@@ -64,7 +64,7 @@ public class CustomersPanel extends Panel {
     }
 
     private void setupBottomPanel(final GridPane bottomPane) {
-        CircleButton circleButton = new CircleButton();
+        final CircleButton circleButton = new CircleButton();
         GridPane.setHalignment(circleButton, HPos.RIGHT);
         GridPane.setValignment(circleButton, VPos.CENTER);
         circleButton.setOnMouseClicked(e -> this.panelManager.showPanel(this.layout, new AddCustomersPanel()));

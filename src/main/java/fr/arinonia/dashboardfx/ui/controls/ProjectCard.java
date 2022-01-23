@@ -5,8 +5,6 @@ import fr.arinonia.dashboardfx.DashBoard;
 import fr.arinonia.dashboardfx.Main;
 import fr.arinonia.dashboardfx.projects.ProjectData;
 import fr.arinonia.dashboardfx.projects.ProjectStateEnum;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;

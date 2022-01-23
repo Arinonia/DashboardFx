@@ -25,7 +25,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 import java.time.LocalDate;
@@ -236,7 +235,7 @@ public class AddProjectPanel extends Panel {
 
         treeView.getColumns().setAll(pp, nameColumn, emailColumn, dateColumn);
 
-        JFXTextField filterField = new JFXTextField();
+        final JFXTextField filterField = new JFXTextField();
         GridPane.setHgrow(filterField, Priority.ALWAYS);
         GridPane.setVgrow(filterField, Priority.ALWAYS);
         GridPane.setHalignment(filterField, HPos.RIGHT);
@@ -276,6 +275,6 @@ public class AddProjectPanel extends Panel {
                                         treeView.getSelectionModel().getSelectedItem().getValue().getDate()), datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), priceField.getText(), ""));
             System.err.println("'getImage().impl_getUrl()' is Deprecated, i need to found something else for get the path");
         });
-        layout.getChildren().add(test);
+        this.layout.getChildren().add(test);
     }
 }

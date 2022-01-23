@@ -42,13 +42,13 @@ public class RootPanel extends Panel {
         this.layout.add(topPanel.getLayout(), 0, 0);
         this.layout.add(pane, 0, 1);
 
-        ColumnConstraints col1 = new ColumnConstraints();
+        final ColumnConstraints col1 = new ColumnConstraints();
         col1.setPrefWidth(280);
         col1.setMaxWidth(280);
         col1.setMinWidth(280);
-        ColumnConstraints col2 = new ColumnConstraints();
-        pane.getColumnConstraints().addAll(col1, col2);
 
+        final ColumnConstraints col2 = new ColumnConstraints();
+        pane.getColumnConstraints().addAll(col1, col2);
 
         final LeftHomePanel leftHomePanel = new LeftHomePanel(this);
         leftHomePanel.init(panelManager);

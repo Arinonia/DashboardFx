@@ -3,13 +3,13 @@ package fr.arinonia.dashboardfx.ui.transitions;
 import javafx.animation.Transition;
 import javafx.util.Duration;
 
-public abstract class SmoothishTransition extends Transition {
+public abstract class SmoothsTransition extends Transition {
 
     private final double mod;
     private final double delta;
     private final static int TRANSITION_DURATION = 200;
 
-    public SmoothishTransition(SmoothishTransition old, double delta) {
+    public SmoothsTransition(SmoothsTransition old, double delta) {
         this.setCycleDuration(Duration.millis(TRANSITION_DURATION));
         this.setCycleCount(0);
         if (old != null && this.sameSign(delta, old.delta) && this.playing(old)) {
@@ -32,11 +32,11 @@ public abstract class SmoothishTransition extends Transition {
         }
     }
 
-    private boolean playing(Transition t) {
+    private boolean playing(final Transition t) {
         return t.getStatus() == Status.RUNNING;
     }
 
-    private boolean sameSign(double d1, double d2) {
+    private boolean sameSign(final double d1, final double d2) {
         return (d1 > 0 && d2 > 0) || (d1 < 0 && d2 < 0);
     }
 }

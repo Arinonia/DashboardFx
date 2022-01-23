@@ -1,6 +1,5 @@
 package fr.arinonia.dashboardfx.ui.panels.home;
 
-import fr.arinonia.dashboardfx.customers.CustomersData;
 import fr.arinonia.dashboardfx.projects.ProjectData;
 import fr.arinonia.dashboardfx.ui.PanelManager;
 import fr.arinonia.dashboardfx.ui.controls.*;
@@ -9,7 +8,6 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
-import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 
 /**
@@ -23,16 +21,16 @@ public class ProjectPanel extends Panel {
         super.init(panelManager);
         this.layout.setStyle("-fx-background-color: rgba(33, 33, 33, 0.8)");
 
-        final GridPane test = new GridPane();
-        GridPane.setHgrow(test, Priority.ALWAYS);
-        GridPane.setVgrow(test, Priority.ALWAYS);
-        this.layout.getChildren().add(test);
+        final GridPane background = new GridPane();
+        GridPane.setHgrow(background, Priority.ALWAYS);
+        GridPane.setVgrow(background, Priority.ALWAYS);
+        this.layout.getChildren().add(background);
 
         final RowConstraints rowConstraints = new RowConstraints();
         rowConstraints.setValignment(VPos.BOTTOM);
         rowConstraints.setMinHeight(100.0D);
         rowConstraints.setMaxHeight(100.0D);
-        test.getRowConstraints().addAll(new RowConstraints(), rowConstraints);
+        background.getRowConstraints().addAll(new RowConstraints(), rowConstraints);
 
         final GridPane topPane = new GridPane();
         GridPane.setHgrow(topPane, Priority.ALWAYS);
@@ -41,8 +39,8 @@ public class ProjectPanel extends Panel {
         final GridPane bottomPane = new GridPane();
         GridPane.setHgrow(bottomPane, Priority.ALWAYS);
         GridPane.setVgrow(bottomPane, Priority.ALWAYS);
-        test.add(topPane, 0, 0);
-        test.add(bottomPane, 0, 1);
+        background.add(topPane, 0, 0);
+        background.add(bottomPane, 0, 1);
 
         final PanelList panelList = new PanelList();
         GridPane.setHgrow(panelList, Priority.ALWAYS);
@@ -54,15 +52,14 @@ public class ProjectPanel extends Panel {
         topPane.getChildren().add(panelList);
 
         for (final ProjectData projectData : this.panelManager.getDashBoard().getProjectUtils().loadProjects()) {
-            System.out.println(projectData.getCustomersData().getImage());
-            ProjectCard card = new ProjectCard(projectData, this.panelManager.getDashBoard());
+            final ProjectCard card = new ProjectCard(projectData, this.panelManager.getDashBoard());
             panelList.add(card);
         }
         this.setupBottomPanel(bottomPane);
     }
 
     private void setupBottomPanel(final GridPane bottomPane) {
-        CircleButton circleButton = new CircleButton();
+        final CircleButton circleButton = new CircleButton();
         GridPane.setHalignment(circleButton, HPos.RIGHT);
         GridPane.setValignment(circleButton, VPos.CENTER);
         circleButton.setOnMouseClicked(e -> this.panelManager.showPanel(this.layout, new AddProjectPanel()));
