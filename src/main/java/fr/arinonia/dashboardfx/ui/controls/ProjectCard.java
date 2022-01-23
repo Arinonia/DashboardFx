@@ -1,7 +1,9 @@
 package fr.arinonia.dashboardfx.ui.controls;
 
 import com.jfoenix.controls.JFXDatePicker;
+import fr.arinonia.dashboardfx.DashBoard;
 import fr.arinonia.dashboardfx.Main;
+import fr.arinonia.dashboardfx.projects.ProjectData;
 import fr.arinonia.dashboardfx.projects.ProjectStateEnum;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -22,17 +24,19 @@ import java.time.LocalDate;
  **/
 public class ProjectCard extends Card {
 
-    public ProjectCard(final String imageUrl, final String customerName, final String projectType, final String projectState, final String price, final String deadline) {
+
+
+    public ProjectCard(final ProjectData projectData, final DashBoard dashBoard) {
         super();
         final Circle circle = new Circle(0, 0, 25);
-        final Image imageView = new Image(imageUrl);
+        final Image imageView = new Image(projectData.getCustomersData().getImage());
         circle.setFill(new ImagePattern(imageView));
         circle.setStyle(" -fx-background-repeat: no-repeat; -fx-background-size: contain;");
         circle.setTranslateX(20.0D);
         if (imageView != null && !imageView.isError())
             this.mainPane.getChildren().add(circle);
 
-        final Label nameLabel = new Label(customerName);
+        final Label nameLabel = new Label(projectData.getCustomersData().getName());
         GridPane.setHgrow(nameLabel, Priority.ALWAYS);
         GridPane.setVgrow(nameLabel, Priority.ALWAYS);
         GridPane.setHalignment(nameLabel, HPos.LEFT);
@@ -42,7 +46,7 @@ public class ProjectCard extends Card {
         this.mainPane.getChildren().add(nameLabel);
 
 
-        final Label priceLabel = new Label(price + "€");
+        final Label priceLabel = new Label(projectData.getPrice() + "€");
         GridPane.setHgrow(priceLabel, Priority.ALWAYS);
         GridPane.setVgrow(priceLabel, Priority.ALWAYS);
         GridPane.setHalignment(priceLabel, HPos.CENTER);
@@ -50,7 +54,7 @@ public class ProjectCard extends Card {
         priceLabel.setStyle("-fx-font-family: Inconsolata; -fx-font-size: 18px; -fx-text-fill: white;");
         this.mainPane.getChildren().add(priceLabel);
 
-        final JFXDatePicker datePicker = new JFXDatePicker(LocalDate.parse(deadline));
+        final JFXDatePicker datePicker = new JFXDatePicker(LocalDate.parse(projectData.getDeadLine()));
         GridPane.setHgrow(datePicker, Priority.ALWAYS);
         GridPane.setVgrow(datePicker, Priority.ALWAYS);
         GridPane.setValignment(datePicker, VPos.CENTER);
@@ -72,8 +76,8 @@ public class ProjectCard extends Card {
         project_type_combobox.setDisable(true);
         this.infosPane.getChildren().add(project_type_combobox);
 
-        project_type_combobox.getItems().add(projectType);
-        project_type_combobox.getSelectionModel().select(projectType);
+        project_type_combobox.getItems().add(projectData.getProjectEnum().name());
+        project_type_combobox.getSelectionModel().select(projectData.getProjectEnum().name());
 
 
         final MaterialComboBox project_state_combobox = new MaterialComboBox();
@@ -89,13 +93,10 @@ public class ProjectCard extends Card {
         for (final ProjectStateEnum projects : ProjectStateEnum.values()) {
             project_state_combobox.getItems().add(projects.name());
         }
-        project_state_combobox.getSelectionModel().select(projectState);
-        project_state_combobox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
-                //TODO change project state
-                System.out.println("Project state changed " + oldValue + " to " + newValue);
-            }
+        project_state_combobox.getSelectionModel().select(projectData.getProjectStateEnum().name());
+        project_state_combobox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            dashBoard.getProjectUtils().updateProject(new ProjectData(ProjectStateEnum.valueOf(newValue), projectData.getProjectEnum(), projectData.getCustomersData(), projectData.getDeadLine(), projectData.getPrice(), projectData.getDescription()));
+            System.out.println("Project state changed " + oldValue + " to " + newValue);
         });
     }
 }

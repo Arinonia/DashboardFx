@@ -14,7 +14,9 @@ I'M NOT USING FXML, I HATE THAT.
 ### Screenshot of the progress
 
 Project panel:
-![Project Panel](screenshots/project_panel.png?raw=true "Project Panel")
+![Projects Panel](screenshots/projects_panel.png?raw=true "Projects Panel")
+Add project panel:
+![Add project Panel](screenshots/add_project_panel.png?raw=true "Add project Panel")
 Customers panel:
 ![Customers Panel](screenshots/customers_panel.png?raw=true "Customers Panel")
 Add customers panel:

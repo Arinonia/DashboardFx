@@ -55,9 +55,7 @@ public class ProjectPanel extends Panel {
 
         for (final ProjectData projectData : this.panelManager.getDashBoard().getProjectUtils().loadProjects()) {
             System.out.println(projectData.getCustomersData().getImage());
-            //CustomersCard card = new CustomersCard(projectData.getProjectEnum().name(), projectData.getProjectStateEnum().name(), projectData.getCustomersData().getName(), projectData.getDeadLine());
-            ProjectCard card = new ProjectCard(projectData.getCustomersData().getImage(), projectData.getCustomersData().getName(), projectData.getProjectEnum().name(),
-                    projectData.getProjectStateEnum().name(), projectData.getPrice(), projectData.getDeadLine());
+            ProjectCard card = new ProjectCard(projectData, this.panelManager.getDashBoard());
             panelList.add(card);
         }
         this.setupBottomPanel(bottomPane);

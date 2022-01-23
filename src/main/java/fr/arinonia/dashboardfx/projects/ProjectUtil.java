@@ -59,4 +59,16 @@ public class ProjectUtil {
             e.printStackTrace();
         }
     }
+
+    public void updateProject(final ProjectData projectData) {
+        try {
+            final FileWriter fw = new FileWriter(new File(this.fileManager.getProjectsFolder(), projectData.getCustomersData().getName() + ".projects"));
+            fw.write("");
+            this.json.toJson(projectData, fw);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

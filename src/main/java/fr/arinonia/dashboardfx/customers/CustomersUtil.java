@@ -80,5 +80,13 @@ public class CustomersUtil {
             e.printStackTrace();
         }
     }
-
+    private void write(final File file, final String json) {
+        try {
+            final FileWriter fw = new FileWriter(file);
+            fw.write(json);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
