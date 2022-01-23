@@ -1,8 +1,11 @@
 package fr.arinonia.dashboardfx.ui.panels.home;
 
+import fr.arinonia.dashboardfx.customers.CustomersData;
+import fr.arinonia.dashboardfx.projects.ProjectData;
 import fr.arinonia.dashboardfx.ui.PanelManager;
 import fr.arinonia.dashboardfx.ui.controls.Card;
 import fr.arinonia.dashboardfx.ui.controls.CircleButton;
+import fr.arinonia.dashboardfx.ui.controls.CustomersCard;
 import fr.arinonia.dashboardfx.ui.controls.PanelList;
 import fr.arinonia.dashboardfx.ui.panel.Panel;
 import javafx.geometry.HPos;
@@ -53,29 +56,10 @@ public class ProjectPanel extends Panel {
         panelList.getLayout().setAlignment(Pos.TOP_CENTER);
         topPane.getChildren().add(panelList);
 
-        Card card = new Card();
-        panelList.add(card);
-
-        Card card2 = new Card();
-        panelList.add(card2);
-
-        Card card3 = new Card();
-        panelList.add(card3);
-
-        Card card4 = new Card();
-        panelList.add(card4);
-
-        Card card5 = new Card();
-        panelList.add(card5);
-
-        Card card6 = new Card();
-        panelList.add(card6);
-
-        Card card7 = new Card();
-        panelList.add(card7);
-
-        Card card8 = new Card();
-        panelList.add(card8);
+        for (final ProjectData projectData : this.panelManager.getDashBoard().getProjectUtils().loadProjects()) {
+            CustomersCard card = new CustomersCard(projectData.getProjectEnum().name(), projectData.getProjectStateEnum().name(), projectData.getCustomersData().getName(), projectData.getDeadLine());
+            panelList.add(card);
+        }
         this.setupBottomPanel(bottomPane);
     }
 

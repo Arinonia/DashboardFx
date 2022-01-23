@@ -26,29 +26,18 @@ public class CustomersUtil {
         return null;
     }
 
-    public ArrayList<CustomersData> loadCustomers() {
+    public ArrayList<CustomersData> loadCustomers(final boolean showMySelf) {
         final ArrayList<CustomersData> customersData = new ArrayList<>();
         final File[] files =  this.fileManager.getCustomersFolder().listFiles();
 
         if (files != null) {
             for (final File file : files) {
-                if (!file.getName().equals("Me.customers") && file.getName().endsWith(".customers")) {
-
-                    final StringBuilder builder = new StringBuilder();
-
-                    try (final FileReader fileStream = new FileReader(file);
-                        final BufferedReader bufferedReader = new BufferedReader(fileStream)) {
-
-                        String line;
-
-                        while( (line = bufferedReader.readLine()) != null ) {
-                            builder.append(line);
-                        }
-
-                    } catch (IOException ex) {
-                        //exception Handling
+                if (showMySelf && file.getName().endsWith(".customers")) {
+                    customersData.add(this.deserializeCustomersData(file));
+                } else {
+                    if (!file.getName().equals("Me.customers") && file.getName().endsWith(".customers")) {
+                        customersData.add(this.deserializeCustomersData(file));
                     }
-                    customersData.add(json.fromJson(builder.toString(), CustomersData.class));
                 }
             }
         }
@@ -56,13 +45,35 @@ public class CustomersUtil {
         return customersData;
     }
 
+    private CustomersData deserializeCustomersData(final File file) {
+        final StringBuilder builder = new StringBuilder();
+
+        try (final FileReader fileStream = new FileReader(file);
+             final BufferedReader bufferedReader = new BufferedReader(fileStream)) {
+
+            String line;
+
+            while( (line = bufferedReader.readLine()) != null ) {
+                builder.append(line);
+            }
+
+        } catch (IOException ex) {
+            //exception Handling
+        }
+        return  json.fromJson(builder.toString(), CustomersData.class);
+    }
+
     public int getCustomersSize() {
-        return Arrays.stream(this.fileManager.getCustomersFolder().listFiles()).filter(f -> f.getName().endsWith(".customers")).toArray().length - 1;
+        final File[] files = this.fileManager.getCustomersFolder().listFiles();
+        if (files != null)
+            return Arrays.stream(files).filter(f -> f.getName().endsWith(".customers")).toArray().length - 1;
+        else
+            return 0;
     }
 
     public void createCustomers(final CustomersData customersData) {
         try {
-            FileWriter fw = new FileWriter(new File(this.fileManager.getCustomersFolder(), customersData.getName() + ".customers"));
+            final FileWriter fw = new FileWriter(new File(this.fileManager.getCustomersFolder(), customersData.getName() + ".customers"));
             this.json.toJson(customersData, fw);
             fw.close();
         } catch (IOException e) {

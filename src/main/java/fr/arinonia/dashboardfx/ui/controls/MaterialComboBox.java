@@ -19,11 +19,6 @@ public class MaterialComboBox extends JFXComboBox<String> {
         this.getStylesheets().add(Main.class.getResource("/css/combobox.css").toExternalForm());
         this.setStyle("-jfx-focus-color: #"  + Constants.PURPLE + "; -jfx-unfocus-color: rgba(0, 0, 0, 0); -fx-font-family: Inconsolata;");
 
-        for (ProjectEnum projects : ProjectEnum.values()) {
-            this.getItems().add(projects.name());
-        }
-
-        this.getSelectionModel().select(0);
 
     }
 }

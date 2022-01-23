@@ -1,9 +1,7 @@
 package fr.arinonia.dashboardfx.ui.panels.home;
 
 import fr.arinonia.dashboardfx.customers.CustomersData;
-import fr.arinonia.dashboardfx.customers.CustomersUtil;
 import fr.arinonia.dashboardfx.ui.PanelManager;
-import fr.arinonia.dashboardfx.ui.controls.Card;
 import fr.arinonia.dashboardfx.ui.controls.CircleButton;
 import fr.arinonia.dashboardfx.ui.controls.CustomersCard;
 import fr.arinonia.dashboardfx.ui.controls.PanelList;
@@ -56,7 +54,7 @@ public class CustomersPanel extends Panel {
         panelList.getLayout().setAlignment(Pos.TOP_CENTER);
         topPane.getChildren().add(panelList);
 
-        for (CustomersData customersData : this.panelManager.getDashBoard().getCustomersUtils().loadCustomers()) {
+        for (final CustomersData customersData : this.panelManager.getDashBoard().getCustomersUtils().loadCustomers(false)) {
             CustomersCard card = new CustomersCard(customersData.getName(), customersData.getEmail(), customersData.getImage(), customersData.getDate());
             panelList.add(card);
         }

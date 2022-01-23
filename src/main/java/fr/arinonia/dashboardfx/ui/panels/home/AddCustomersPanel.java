@@ -203,8 +203,9 @@ public class AddCustomersPanel extends Panel {
                             }
                         }
 
-                        final CustomersData customersData = new CustomersData(usernameField.getText(), emailField.getText(), copied.getAbsolutePath(),datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        final CustomersData customersData = new CustomersData(usernameField.getText(), emailField.getText(), copied.getAbsolutePath(), datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                         new CustomersUtil(panelManager.getDashBoard().getFileManager()).createCustomers(customersData);
+                        //TODO BRO WHY TF I DO THAT OMG, USE THE FUCK CustomerUtils FROM DashBoard class -_-
                         panelManager.showPanel(this.layout, new CustomersPanel());
                     } else {
                         //I don't know
