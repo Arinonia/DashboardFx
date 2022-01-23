@@ -2,7 +2,6 @@ package fr.arinonia.dashboardfx.projects;
 
 
 import com.google.gson.Gson;
-import fr.arinonia.dashboardfx.customers.CustomersData;
 import fr.arinonia.dashboardfx.file.FileManager;
 
 import java.io.*;

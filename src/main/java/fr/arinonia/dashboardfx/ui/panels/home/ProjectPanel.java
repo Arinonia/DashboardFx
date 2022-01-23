@@ -3,10 +3,7 @@ package fr.arinonia.dashboardfx.ui.panels.home;
 import fr.arinonia.dashboardfx.customers.CustomersData;
 import fr.arinonia.dashboardfx.projects.ProjectData;
 import fr.arinonia.dashboardfx.ui.PanelManager;
-import fr.arinonia.dashboardfx.ui.controls.Card;
-import fr.arinonia.dashboardfx.ui.controls.CircleButton;
-import fr.arinonia.dashboardfx.ui.controls.CustomersCard;
-import fr.arinonia.dashboardfx.ui.controls.PanelList;
+import fr.arinonia.dashboardfx.ui.controls.*;
 import fr.arinonia.dashboardfx.ui.panel.Panel;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -57,7 +54,10 @@ public class ProjectPanel extends Panel {
         topPane.getChildren().add(panelList);
 
         for (final ProjectData projectData : this.panelManager.getDashBoard().getProjectUtils().loadProjects()) {
-            CustomersCard card = new CustomersCard(projectData.getProjectEnum().name(), projectData.getProjectStateEnum().name(), projectData.getCustomersData().getName(), projectData.getDeadLine());
+            System.out.println(projectData.getCustomersData().getImage());
+            //CustomersCard card = new CustomersCard(projectData.getProjectEnum().name(), projectData.getProjectStateEnum().name(), projectData.getCustomersData().getName(), projectData.getDeadLine());
+            ProjectCard card = new ProjectCard(projectData.getCustomersData().getImage(), projectData.getCustomersData().getName(), projectData.getProjectEnum().name(),
+                    projectData.getProjectStateEnum().name(), projectData.getPrice(), projectData.getDeadLine());
             panelList.add(card);
         }
         this.setupBottomPanel(bottomPane);

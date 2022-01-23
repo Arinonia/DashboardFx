@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 public class Card extends GridPane {
 
     protected final GridPane mainPane = new GridPane();
+    protected final GridPane infosPane = new GridPane();
     private boolean toggle = false;
 
     public Card() {
@@ -37,7 +38,7 @@ public class Card extends GridPane {
         this.mainPane.setStyle("-fx-background-color: rgb(30, 32, 34); -fx-background-radius: 30px;");
         vBox.getChildren().add(this.mainPane);
 
-        final GridPane infosPane = new GridPane();
+
         GridPane.setHalignment(infosPane, HPos.CENTER);
         infosPane.setMinHeight(120);
         infosPane.setMinWidth(800);
